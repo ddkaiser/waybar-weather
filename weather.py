@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # credits to: https://gist.github.com/bjesus/f8db49e1434433f78e5200dc403d58a3
 # credits to: https://github.com/khaneliman/dotfiles/blob/7d00ee4f66cdfcfce6fc3d11f0a7c6b3f00cc57f/dots/linux/hyprland/home/.config/waybar/scripts/weather.py
@@ -144,7 +144,7 @@ def get_output(json_input: str, cfg: Config) -> str:
     ] += f"{text['feels_like']}: {weather['current_condition'][0][cfg.feels_like_unit]}°\n"
     data[
         "tooltip"
-    ] += f"{text['wind']}: {weather['current_condition'][0]['windspeed' + cfg.windspeed_unit]}{cfg.windspeed_indicator}\n"
+    ] += f"{text['wind']}: {weather['current_condition'][0]['windspeed' + cfg.windspeed_unit]} {cfg.windspeed_indicator}\n"
     data[
         "tooltip"
     ] += f"{text['humidity']}: {weather['current_condition'][0]['humidity']}%\n"
@@ -185,7 +185,7 @@ def main():
         windspeed_indicator = "Km/h"
     else:
         windspeed_unit = "Miles"
-        windspeed_indicator = "Mi/h"
+        windspeed_indicator = "MPH"
 
     if args.unit == "C":
         config = Config(
