@@ -132,7 +132,8 @@ def get_output(json_input: str, cfg: Config) -> str:
     """Get the json output."""
     text = LOCALIZATION[cfg.lang]
     weather = json.loads(json_input)
-    data["text"] = WEATHER_CODES[weather["current_condition"][0]["weatherCode"]] + " "
+    data["text"] =  weather["nearest_area"][0]["areaName"][0]['value'] + ": "
+    data["text"] += WEATHER_CODES[weather["current_condition"][0]["weatherCode"]] + " "
     data["text"] += weather["current_condition"][0][cfg.temp_unit] + cfg.temp_indicator
 
     weather_desc = text["weatherDesc"]
